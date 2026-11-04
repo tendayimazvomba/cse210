@@ -6,27 +6,34 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Exercise3 Project.");
 
-        Console.Write("What is the magic number? ");
-        string userInput = Console.ReadLine();
-        int magicNumber = int.Parse(userInput);
+        int magicNumber;
+        int guessedNumber;
 
-        Console.Write("What is your guess? ");
-        string userGuess = Console.ReadLine();
-        int guessedNumber = int.Parse(userGuess);
-
-        if (magicNumber > guessedNumber)
+        do
         {
-            Console.WriteLine("Higher");
-        }
+            Console.Write("What is the magic number? ");
+            string userInput = Console.ReadLine();
+            magicNumber = int.Parse(userInput);
 
-        else if (magicNumber < guessedNumber)
-        {
-            Console.WriteLine("Lower");
-        }
+            Console.Write("What is your guess? ");
+            string userGuess = Console.ReadLine();
+            guessedNumber = int.Parse(userGuess);
 
-        else
-        {
-            Console.WriteLine("You guessed it!");
-        }
+            if (magicNumber > guessedNumber)
+            {
+                Console.WriteLine("Higher");
+            }
+
+            else if (magicNumber < guessedNumber)
+            {
+                Console.WriteLine("Lower");
+            }
+
+            else
+            {
+                Console.WriteLine("You guessed it!");
+            }
+        } while (magicNumber != guessedNumber);
+
     }
 }
