@@ -6,18 +6,15 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Exercise3 Project.");
 
-        int magicNumber;
-        int guessedNumber;
+        Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 11);
+        bool guessedRight = false;
 
         do
         {
-            Console.Write("What is the magic number? ");
-            string userInput = Console.ReadLine();
-            magicNumber = int.Parse(userInput);
-
             Console.Write("What is your guess? ");
             string userGuess = Console.ReadLine();
-            guessedNumber = int.Parse(userGuess);
+            int guessedNumber = int.Parse(userGuess);
 
             if (magicNumber > guessedNumber)
             {
@@ -32,8 +29,9 @@ class Program
             else
             {
                 Console.WriteLine("You guessed it!");
+                guessedRight = true;
             }
-        } while (magicNumber != guessedNumber);
+        } while (guessedRight == false);
 
     }
 }
