@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Formats.Asn1;
 
 public class Journal
 {
@@ -46,7 +45,7 @@ public class Journal
             loadedEntry._promptText = parts[1].Trim();
             loadedEntry._entryText = parts[2].Trim();
 
-            AddEntry(loadedEntry);            
+            AddEntry(loadedEntry);
         }
     }
 }
