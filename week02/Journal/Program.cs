@@ -1,3 +1,10 @@
+// Creativity and Exceeding Requirements:
+// 1. Added 10 journal prompts instead of the minimum 5.
+// 2. Implemented a feature that prevents the same journal prompt
+//    from appearing twice consecutively.
+// 3. The PromptGenerator class remembers the previously selected
+//    prompt index and generates a different one for the next entry.
+
 using System;
 
 class Program
@@ -44,6 +51,25 @@ class Program
             else if (choice == 2)
             {
                 myJournal.DisplayAll();
+            }
+
+            else if (choice == 3)
+            {
+                Console.Write("What is the filename? ");
+                string filename = Console.ReadLine();
+                myJournal.LoadFromFile(filename);
+            }
+
+            else if (choice == 4)
+            {
+                Console.Write("What is the filename? ");
+                string filename = Console.ReadLine();
+                myJournal.SaveToFile(filename);
+            }
+
+            else if (choice != 5)
+            {
+                Console.WriteLine("Invalid choice. Please select 1 to 5.");
             }
         } while (choice != 5);
     }

@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 public class PromptGenerator
 {
     public List<string> _prompts = new List<string>();
+
+    private int _lastPromptIndex = -1;
 
     public PromptGenerator()
     {
@@ -23,6 +26,13 @@ public class PromptGenerator
     {
         Random random = new Random();
         int index = random.Next(_prompts.Count);
+        
+        while (index == _lastPromptIndex)
+        {
+            index = random.Next(_prompts.Count);
+        }
+
+        _lastPromptIndex = index;
         return _prompts[index];
     }
 }

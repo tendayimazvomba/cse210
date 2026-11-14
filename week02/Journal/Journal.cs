@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 
 public class Journal
 {
@@ -20,11 +22,31 @@ public class Journal
 
     public void SaveToFile(string file)
     {
-
+        using (StreamWriter outputFile = new StreamWriter(file))
+        {
+            foreach (Entry entry in _entries)
+            {
+                outputFile.WriteLine($"{entry._date} | {entry._promptText} | {entry._entryText}");
+            }
+        }
     }
 
     public void LoadFromFile(string file)
     {
+        string[] lines = File.ReadAllLines(file);
 
+        _entries.Clear();
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+
+            Entry loadedEntry = new Entry();
+            loadedEntry._date = parts[0].Trim();
+            loadedEntry._promptText = parts[1].Trim();
+            loadedEntry._entryText = parts[2].Trim();
+
+            AddEntry(loadedEntry);            
+        }
     }
 }
