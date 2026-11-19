@@ -26,7 +26,7 @@ class Program
                 break;
             }
 
-            scripture.HiddenRandomWords(3);
+            scripture.HideRandomWords(3);
 
             if (scripture.IsCompletelyHidden())
             {
